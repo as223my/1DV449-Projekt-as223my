@@ -1,4 +1,4 @@
-#Projekt idé (movie/tvshows mashup)
+#Projekt idé (movie/tvshow mashup)
 
 Jag är väldigt förtjust i bra tv-serier och filmer. I nuläget använder jag en applikation som håller reda och listar mina favorit tv-serier, men jag saknar en applikation där man både kan söka och skapa en "lista" över tv-serier och filmer tillsammans.
 
