@@ -54,6 +54,16 @@ class MashupView{
 
 	public function menu(){
 
+		$html = "
+		<nav class='navbar navbar-default navbar-fixed-top' id='navbar'>
+	      	<div class='container-fluid'>
+	      	 <p id='brand'> <img src='./css/tv.png' id='tvpic' alt='tv'>Never-miss 	<a href='#' id='navlink1'>Search</a>
+  			<a href='#' id='navlink2'>Your list</a></p>
+	  		</div>
+      	</nav>";
+     
+    	return $html;
+
 	}
 
 	public function lista(){

@@ -19,7 +19,7 @@ class HTMLView{
 				integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
 				<link rel='stylesheet' type='text/css' href='./css/style.css'>
 
-				<link href='https://fonts.googleapis.com/css?family=Lora:700italic' rel='stylesheet' type='text/css'>
+				<link href='https://fonts.googleapis.com/css?family=Lora:700italic|Merriweather' rel='stylesheet' type='text/css'>
 			</head>
 			<body>
 				$content

@@ -13,6 +13,6 @@ class MashupController{
 	
 	public function loginView(){
 		
-		return $this->mashupView->login(); 
+		return $this->mashupView->menu(); 
 	}
 }
