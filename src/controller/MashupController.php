@@ -12,7 +12,8 @@ class MashupController{
 	}
 	
 	public function loginView(){
-		
-		return $this->mashupView->menu(); 
+		$html = $this->mashupView->loginNavbar();
+		$html .= $this->mashupView->loginForm();
+		return $html;
 	}
 }

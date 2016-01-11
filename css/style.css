@@ -1,16 +1,5 @@
-/*body{ 
-	min-width:800px; 
-	height:500px; 
-}*/
-
-
-#navbar{
-	background-color:rgba(0, 178, 179, 0.3); 
-	border-bottom:3px outset rgba(0, 178, 179, 1);
-	border-right:2px outset rgba(0, 178, 179, 1);
-	border-left:2px outset rgba(0, 178, 179, 1);
-	border-top:1px outset rgba(0, 178, 179, 1);
-	min-width: 800px;
+body {
+  padding-top:50px;
 }
 
 #logindiv{
@@ -20,12 +9,11 @@
 
 #logindiv h1{
 	margin-right:12%;
-	font-family: 'Lora';
-	z-index: 1;
+	font-family: 'Georgia';
 }
 
 #brand{
-	font-family: 'Lora';
+	font-family: 'Georgia';
 	font-size:200%;
 	margin-bottom:-15px;
 }
@@ -41,25 +29,39 @@
 	margin-right:auto;
 	max-width:700px;
 }
-.container-fluid a{
-	margin-bottom:-100px;
+
+#tvpic{
+	margin-left:-10px;
+	margin-right:10px;
+	margin-top:7px;
 }
 
+.navbar{
+	background-color:rgba(156, 226, 227, 1); 
+	border-bottom:3px outset rgba(0, 178, 179, 1);
+	border-right:2px outset rgba(0, 178, 179, 1);
+	border-left:2px outset rgba(0, 178, 179, 1);
+	border-top:1px outset rgba(0, 178, 179, 1);
+}
 #tvpic{
 	margin-left:-10px;
 	margin-right:10px;
 }
 
 #navlink1, #navlink2, #navlink3{
-	font-family: 'Merriweather';
+	font-family: 'Times New Roman';
 	color:black;
-	font-size:75%;
+	font-size:150%;
+	padding-left:80px;
+	margin-top:10px;
 }
 
-#navlink1{
-	margin-left:12%;
+#navbar a:hover{
+	color:white;
 }
 
-#navlink2{
-	margin-left:15%;
+.offline-message{
+	margin-left:-50px;
+	color:#8C1C1C;
+	font-weight:bold;
 }

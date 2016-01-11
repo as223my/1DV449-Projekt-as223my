@@ -12,14 +12,12 @@ class HTMLView{
 		<!DOCTYPE html>
 		<html>
 			<head>
-				<title>Mashup</title>
 				<meta charset ='utf-8' />
-				<!-- Latest compiled and minified CSS -->
-				<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' 
-				integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
-				<link rel='stylesheet' type='text/css' href='./css/style.css'>
-
-				<link href='https://fonts.googleapis.com/css?family=Lora:700italic|Merriweather' rel='stylesheet' type='text/css'>
+				<meta name='viewport' content='width=device-width, initial-scale=1'>
+				<title>Never-miss</title>
+				<link rel='icon' type='image/ico' href='css/favicon.ico'>
+				<link rel='stylesheet' href='lib/bootstrap/css/bootstrap.min.css'>
+				<link rel='stylesheet' type='text/css' href='css/style.css'>
 			</head>
 			<body>
 				$content
