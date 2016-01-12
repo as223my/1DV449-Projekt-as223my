@@ -1,11 +1,13 @@
 <?php
 
 require_once("src/view/HTMLView.php");
-require_once("src/controller/MashupController.php");
+require_once("src/controller/NavigationController.php");
 
-$controller = new \MashupController();
+session_start(); 
+
 $view = new \HTMLView();
+$navigation = new \NavigationController();
 
-$content = $controller->loginView();
+$content = $navigation->doControll();
 
 $view->echoHTML($content); 

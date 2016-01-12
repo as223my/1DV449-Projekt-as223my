@@ -16,4 +16,16 @@ class MashupController{
 		$html .= $this->mashupView->loginForm();
 		return $html;
 	}
+
+	public function getList(){
+		$html = $this->mashupView->navbar();
+		$html .= $this->mashupView->listView(); 
+		return $html;
+	}
+
+	public function getSearchForm(){
+		$html = $this->mashupView->navbar();
+		$html .= $this->mashupView->searchView(); 
+		return $html;
+	}
 }
