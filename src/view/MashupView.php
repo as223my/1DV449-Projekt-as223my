@@ -56,10 +56,9 @@ class MashupView{
 
 	public function scripts(){
 		$html = "
-		<script src='lib/jquery.min.js'></script>
-		<script src='lib/bootstrap/js/bootstrap.min.js'></script>
-		<script src='javascript/checkConnectionDown.js'></script>";
-
+			<script src='lib/jquery.min.js'></script>
+			<script src='lib/bootstrap/js/bootstrap.min.js'></script>
+			<script src='javascript/checkConnectionDown.js'></script>";
 		return $html;
 	}
 }

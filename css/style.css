@@ -58,13 +58,10 @@ body {
 	font-family: 'Times New Roman';
 	color:black;
 	font-size:180%;
-	padding-left:60%;
+	padding-left:100px;
 	margin-top:10px;
 }
 
-#navlink2{
-	padding-left:75%;
-}
 #navbar a:hover{
 	color:white;
 }

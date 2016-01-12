@@ -26,6 +26,7 @@ class MashupController{
 	public function getSearchForm(){
 		$html = $this->mashupView->navbar();
 		$html .= $this->mashupView->searchView(); 
+		$html .= $this->mashupView->scripts(); 
 		return $html;
 	}
 }
