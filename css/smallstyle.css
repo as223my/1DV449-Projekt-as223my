@@ -58,12 +58,10 @@ body {
 	font-family: 'Times New Roman';
 	color:black;
 	font-size:180%;
-	padding-left:150px;
+	padding-left:70px;
 	margin-top:10px;
 }
-#navlink2{
-	padding-left:200px;
-}
+
 #navbar a:hover{
 	color:white;
 }
@@ -81,20 +79,19 @@ body {
 }
 
 #resultList{
+	text-align: center;
 	margin-right: auto;
 	margin-left:auto;
-	text-align: center;
-	width: 700px;
+	width: 300px;
 }
 
-.list-group-item{; 
-	margin-left:-100px;
+.list-group-item{
 	border-color:rgba(0, 178, 179, 0.2);
 }
 
 .pictures{
-	width:150px;
-	height:200px;
+	width:100px;
+	height:150px;
 }
 
 .plot{

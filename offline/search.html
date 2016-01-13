@@ -6,7 +6,8 @@
 			<title>Never-miss (offline)</title>
 			<link rel='icon' type='image/ico' href='css/favicon.ico'>
 			<link rel='stylesheet' href='lib/bootstrap/css/bootstrap.min.css'>
-			<link rel='stylesheet' type='text/css' href='css/style.css'>
+			<link rel='stylesheet' type='text/css' href='css/style.css' media='screen and (min-width:951px)' />
+    		<link rel='stylesheet' type='text/css' href='css/smallstyle.css' media='screen and (max-width:950px)' />
 		</head>
 		<body>
 			<nav class='navbar navbar-inverse navbar-fixed-top'>
@@ -34,12 +35,12 @@
 						<form class='form-horizontal'>
 					    	<div class='form-group'>
 					    		<div class='col-sm-10'>
-					      			<input type='text' class='form-control' id='search' placeholder='for a movie or a tv show' required autofocus>
+					      			<input type='text' class='form-control' id='search' placeholder='for a movie or a tv show' required autofocus disabled>
 					    		</div>
 					  		</div>
 					  		<div class='form-group'>
 					    		<div class='col-sm-10'>
-					      			<button type='submit' class='btn btn-default' id='searchbutton'><span class='glyphicon glyphicon-search' aria-hidden='true'></span></button>
+					      			<button type='submit' class='btn btn-default' id='searchbutton' disabled><span class='glyphicon glyphicon-search' aria-hidden='true'></span></button>
 					    		</div>
 	  						</div>
 						</form>

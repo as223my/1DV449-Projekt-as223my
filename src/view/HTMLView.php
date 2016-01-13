@@ -17,7 +17,8 @@ class HTMLView{
 				<title>Never-miss</title>
 				<link rel='icon' type='image/ico' href='css/favicon.ico'>
 				<link rel='stylesheet' href='lib/bootstrap/css/bootstrap.min.css'>
-				<link rel='stylesheet' type='text/css' href='css/style.css'>
+				<link rel='stylesheet' type='text/css' href='css/style.css' media='screen and (min-width:951px)' />
+    			<link rel='stylesheet' type='text/css' href='css/smallstyle.css' media='screen and (max-width:950px)' />
 			</head>
 			<body>
 				$content

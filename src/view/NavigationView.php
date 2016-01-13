@@ -13,6 +13,7 @@ class NavigationView{
 			return $_GET[self::$action];
 		}else{
 			return self::$actionSearch;
+			return $_GET[self::$action];
 		}
 	}
 }
