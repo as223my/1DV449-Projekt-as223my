@@ -25,8 +25,44 @@ class MashupView{
     	return $html;
 	}
 
-	public function listView(){
-		return "<p>lista</p>"; 
+	public function listView($list){
+		//var_dump($list); die();
+		$imdbid = 0;
+		$imdbRating = 1;
+		$title = 2; 
+		$year = 3;
+		$img = 4; 
+		$plot = 5;
+
+		$html = "
+			<div class='list-group' id='showList'>";
+
+			for($i=0; $i < count($list); $i++){
+				$html .= "<div class='list-group-item'>
+				<button type='button' class='rate'>
+  				<span class='glyphicon glyphicon-star-empty' aria-hidden='true'></span>";
+
+  				if($list[$i][$imdbRating] !==  "N/A"){
+					$html .= $list[$i][$imdbRating]."</button>"; 
+				} 
+
+  				$html .="
+				<button type='button' class='btn btn-default btn-lg remove'  id=".$list[$i][$imdbid].">
+  				<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>
+				<h4>".$list[$i][$title]." (".$list[$i][$year]." )</h4>
+				<img src=".$list[$i][$img]. " class='pictures'>"; 
+
+				if($list[$i][$plot] !==  "N/A"){
+					$html .= "<p class='plot'>".$list[$i][$plot]."</p>"; 
+				} 
+
+				$html .= "<p><a href='http://www.youtube.com/results?search_query=".$list[$i][$title]."+trailer' target='_blank'>Search for trailer on youtube</a></p>";
+				$html .= "</div>";
+			}
+
+		$html .= "</div>";
+
+		return $html; 
 	}
 
 	public function didUserPressSearch(){
@@ -78,13 +114,13 @@ class MashupView{
 				} 
 
   				$html .="
-				<button type='button' class='btn btn-default btn-lg' id=".$completeResults[$i]["imdbID"].">
-  				<span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Add to list</button>
+				<button type='button' class='btn btn-default btn-lg add'  id=".$completeResults[$i]["imdbID"].">
+  				<span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button>
 				<h4>".$completeResults[$i]["Title"]." (".$completeResults[$i]["Year"]." )</h4>
 				<img src=".$completeResults[$i]["Poster"]. " class='pictures'>"; 
 
 				if($completeResults[$i]["Plot"] !==  "N/A"){
-				$html .= "<p class='plot'>".$completeResults[$i]["Plot"]."</p>"; 
+					$html .= "<p class='plot'>".$completeResults[$i]["Plot"]."</p>"; 
 				} 
 
 				if(!empty($epguides)){
@@ -92,6 +128,8 @@ class MashupView{
 						$html .= "<p class='nextEpisode'><b>Next Episode:</b> ".$epguides[1].", ".$epguides[2]."</p>";
 					}
 				}
+
+				$html .= "<p><a href='http://www.youtube.com/results?search_query=".$completeResults[$i]["Title"]."+trailer' target='_blank'>Search for trailer on youtube</a></p>";
 				$html .= "</div>";
 			}
 
@@ -104,6 +142,7 @@ class MashupView{
 		$html = "
 			<script src='lib/jquery.min.js'></script>
 			<script src='lib/bootstrap/js/bootstrap.min.js'></script>
+			<script src='javascript/mashup.js'></script>
 			<script src='javascript/checkConnectionDown.js'></script>";
 		return $html;
 	}

@@ -8,11 +8,15 @@ class MovieInformation{
 	private $searchWord = ""; 
 	private $imdbId = "";
 	private $fullSearchResults = []; 
+	private $filepathSearch; 
+	private $filepathList;
 
 	public function __construct(){
 		$this->urlOmdbAll = "http://www.omdbapi.com/?s=$this->searchWord&r=json";  
 		$this->urlOmdbIndividual = "http://www.omdbapi.com/?i=$this->imdbId&plot=short&r=json"; 
 		$this->urlEpguides = "http://epguides.frecar.no/show/$this->urlEpguides/next/"; 
+		$this->filepathSearch = "src/model/search.json";
+		$this->filepathList = "src/model/list.json";
 	}
 
 	public function getSearchResult($search){
@@ -68,5 +72,18 @@ class MovieInformation{
 		curl_close($ch); 
 	
 		return $data;
+	}
+
+	public function saveSearchTofile($completeSearchResults){
+		$jsonfile = fopen($this->filepathSearch, "w+") or die("Unable to open file!");
+		fwrite($jsonfile, json_encode($completeSearchResults));
+		fclose($jsonfile);	
+	}
+
+	public function getList(){
+		$file = fopen($this->filepathList, "r+") or die("Unable to open file!");
+		$content = fread($file,filesize($this->filepathList)); 
+		fclose($file);
+		return json_decode($content, true);
 	}
 }

@@ -17,15 +17,11 @@ class MashupController{
 		$this->mInfo = new \MovieInformation();
 	}
 	
-	public function loginView(){
-		$html = $this->mashupView->loginNavbar();
-		$html .= $this->mashupView->loginForm();
-		return $html;
-	}
-
 	public function getList(){
 		$html = $this->mashupView->navbar();
-		$html .= $this->mashupView->listView(); 
+		$list = $this->mInfo->getList(); 
+		$html .= $this->mashupView->listView($list); 
+		$html .= $this->mashupView->scripts(); 
 		return $html;
 	}
 
@@ -66,6 +62,8 @@ class MashupController{
 							}
 						}
 					} 
+				
+					$this->mInfo->saveSearchTofile($completeSearchResults); 
 					return $this->getSearchResultView($completeSearchResults, $this->epguides); 
 				}
 			}

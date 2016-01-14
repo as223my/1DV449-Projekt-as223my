@@ -113,3 +113,20 @@ body {
 	color:rgba(0, 178, 179, 1);
 	border:none;
 }
+
+.glyphicon-remove{
+	color:red;
+	float:right;
+}
+
+#showList{
+	margin-top:50px;
+	margin-right: auto;
+	margin-left:auto;
+	text-align: center;
+	width: 300px;
+}
+
+#showList img{
+	margin-left:100px;
+}

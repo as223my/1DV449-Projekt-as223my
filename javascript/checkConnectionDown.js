@@ -1,4 +1,14 @@
-"use strict";
+$(document).ready(function() {
+    setInterval(function(){ 
+    	if(navigator.onLine === false){
+    		location.reload(window.location.href);
+    	}
+	}, 5000);
+});
+
+
+
+/*"use strict";
 
 var connection = {
       
@@ -12,4 +22,4 @@ var connection = {
   
 };
     
-window.onload = connection.init;
+window.onload = connection.init;*/

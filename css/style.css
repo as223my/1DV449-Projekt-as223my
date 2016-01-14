@@ -87,6 +87,10 @@ body {
 	width: 700px;
 }
 
+#resultList img{
+	margin-left:100px;
+}
+
 .list-group-item{; 
 	margin-left:-100px;
 	border-color:rgba(0, 178, 179, 0.2);
@@ -102,6 +106,7 @@ body {
 }
 
 .btn-lg{
+	color: green;
 	float:right;
 }
 
@@ -115,4 +120,21 @@ body {
 	background-color: white;
 	color:rgba(0, 178, 179, 1);
 	border:none;
+}
+
+.glyphicon-remove{
+	color:red;
+	float:right;
+}
+
+#showList{
+	margin-top:50px;
+	margin-right: auto;
+	margin-left:auto;
+	text-align: center;
+	width: 700px;
+}
+
+#showList img{
+	margin-left:100px;
 }
