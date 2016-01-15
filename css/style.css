@@ -30,28 +30,10 @@ body {
 	background-color: #ffff99;
 }
 
-.form-horizontal{
-	margin-left:auto;
-	margin-right:auto;
-	max-width:700px;
-}
-
 #tvpic{
 	margin-left:-10px;
 	margin-right:10px;
 	margin-top:7px;
-}
-
-.navbar{
-	background-color:rgba(156, 226, 227, 1); 
-	border-bottom:3px outset rgba(0, 178, 179, 1);
-	border-right:2px outset rgba(0, 178, 179, 1);
-	border-left:2px outset rgba(0, 178, 179, 1);
-	border-top:1px outset rgba(0, 178, 179, 1);
-}
-#tvpic{
-	margin-left:-10px;
-	margin-right:10px;
 }
 
 #navlink1, #navlink2{
@@ -61,11 +43,50 @@ body {
 	padding-left:150px;
 	margin-top:10px;
 }
+
 #navlink2{
 	padding-left:200px;
 }
+
 #navbar a:hover{
 	color:white;
+}
+
+#resultList{
+	margin-right: auto;
+	margin-left:auto;
+	text-align: center;
+	width: 700px;
+}
+
+#resultList img{
+	margin-left:100px;
+}
+
+#showList{
+	margin-top:50px;
+	margin-right: auto;
+	margin-left:auto;
+	text-align: center;
+	width: 700px;
+}
+
+#showList img{
+	margin-left:100px;
+}
+
+.form-horizontal{
+	margin-left:auto;
+	margin-right:auto;
+	max-width:700px;
+}
+
+.navbar{
+	background-color:rgba(156, 226, 227, 1); 
+	border-bottom:3px outset rgba(0, 178, 179, 1);
+	border-right:2px outset rgba(0, 178, 179, 1);
+	border-left:2px outset rgba(0, 178, 179, 1);
+	border-top:1px outset rgba(0, 178, 179, 1);
 }
 
 .offline-message{
@@ -78,17 +99,6 @@ body {
 	margin-top:20px;
 	color:#8C1C1C;
 	font-weight:bold;
-}
-
-#resultList{
-	margin-right: auto;
-	margin-left:auto;
-	text-align: center;
-	width: 700px;
-}
-
-#resultList img{
-	margin-left:100px;
 }
 
 .list-group-item{; 
@@ -125,16 +135,4 @@ body {
 .glyphicon-remove{
 	color:red;
 	float:right;
-}
-
-#showList{
-	margin-top:50px;
-	margin-right: auto;
-	margin-left:auto;
-	text-align: center;
-	width: 700px;
-}
-
-#showList img{
-	margin-left:100px;
 }

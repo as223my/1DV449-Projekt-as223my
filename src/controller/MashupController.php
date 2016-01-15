@@ -17,45 +17,38 @@ class MashupController{
 		$this->mInfo = new \MovieInformation();
 	}
 	
-	public function getList(){
-		$html = $this->mashupView->navbar();
-		$list = $this->mInfo->getList(); 
-		$html .= $this->mashupView->listView($list); 
-		$html .= $this->mashupView->scripts(); 
-		return $html;
-	}
-
-	public function getSearchForm(){
-
+	// Get search content. 
+	public function getSearchContent(){
 		$content = $this->mashupView->didUserPressSearch();
 		$tokenForm = $content[0]; 
 		$searchValue = $content[1]; 
 
-		// check if search form was sent. 
+		// Check if search form was sent. 
 		if($content !== null){
-			// if token match.
 			if($tokenForm === $_SESSION['token'] && $searchValue !== "" && strlen($searchValue) > 1){
-				$searchValue = str_replace(" ","+",$searchValue);
+				$searchValue = str_replace(" ","+",$searchValue); // Replace space with +, needed for omdb-api. 
 				$result = $this->mInfo->getSearchResult($searchValue);
 
 				if($result == null){
-					return $this->getSearchView("Sorry, API problems at the moment!");
+					return $this->getSearchView("Sorry, API problems at the moment!"); // If something goes wrong with the api. 
 				}else if(isset($result['Response'])){
-					return $this->getSearchView("Sorry, couldn't find what you're looking for!");
+					return $this->getSearchView("Sorry, couldn't find what you're looking for!"); // Movie or tv-show didn't exist. 
 				}else{
 					$this->allsearchResults = $result; 
+					// Decided to only include search results with posters. 
 					for($i=0; $i < count($this->allsearchResults['Search']); $i++){
 						if($this->allsearchResults['Search'][$i]["Poster"] !== "N/A"){
 							array_push($this->searchResults, $this->allsearchResults['Search'][$i]);
 						}	
 					}
-					 //get info of each piece. 
+					
+					// Get more information of each movie/tv-show. 
 					$completeSearchResults = $this->mInfo->getAllDataFromSearch($this->searchResults); 
 					for($i=0; $i < count($completeSearchResults); $i++){
 						if($completeSearchResults[$i]["Type"] == "series"){
 							$nextEpisode = $this->mInfo->getNextEpisode($completeSearchResults[$i]["Title"]);
 							if($nextEpisode != null){
-								//check next episode from epguides
+								// Check next episode from epguides-api. 
 								array_push($this->epguides, $i);
 								array_push($this->epguides, $nextEpisode["episode"]["title"]);
 								array_push($this->epguides, $nextEpisode["episode"]["release_date"]); 
@@ -71,8 +64,9 @@ class MashupController{
 		return $this->getSearchView(""); 
 	}
 
+	// If no search was done or something failed along the way. 
 	public function getSearchView($message){
-		// new token
+		// New token
 		$token = $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 
 		$html = $this->mashupView->navbar();
@@ -81,8 +75,9 @@ class MashupController{
 		return $html;
 	}
 
+	// If search was successful. 
 	public function getSearchResultView($completeResults, $epguides){
-		// new token
+		// New token
 		$token = $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 		$message = ""; 
 
@@ -91,6 +86,14 @@ class MashupController{
 		$html .= $this->mashupView->displaySearchResult($completeResults, $epguides); 
 		$html .= $this->mashupView->scripts(); 
 		return $html;
+	}
 
+	// Get list of selected movies & tv-shows.
+	public function getList(){
+		$html = $this->mashupView->navbar();
+		$list = $this->mInfo->getList(); 
+		$html .= $this->mashupView->listView($list); 
+		$html .= $this->mashupView->scripts();
+		return $html;
 	}
 }

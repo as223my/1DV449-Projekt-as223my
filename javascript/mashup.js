@@ -4,10 +4,11 @@ var mashup = {
     toAdd : [],
     newList : [],
 
-
     init:function(e){
+
+        // Add a movie or a tv-show to list file.
 		$(".add").click(function(){
-			var id = this.id; 
+			var id = this.id; // ButtonId (imdbID). 
             $.ajax({ 
                 type: 'GET', 
                 url: './src/model/search.json', 
@@ -34,6 +35,12 @@ var mashup = {
 			                		mashup.newList.push(result[i]); 
 		                		}
 	                		}
+                            // Don't add doublets to list
+                            for(var j=0; j < mashup.newList.length; j++){
+                                if(jQuery.inArray(mashup.toAdd[0], mashup.newList[j]) !== -1){
+                                    mashup.toAdd = [];
+                                }
+                            }
                 			mashup.newList.push(mashup.toAdd);
 
                 			 $.ajax({ 
@@ -55,8 +62,9 @@ var mashup = {
             });
         });
 
+        // Remove a movie or tv-show from list. 
 		$(".remove").click(function(){ 
-			var id = this.id; 
+			var id = this.id; // ButtonId (imdbID).
 			var list = []; 
             $.ajax({ 
                 type: 'GET', 
@@ -65,12 +73,11 @@ var mashup = {
                 success: function (result) {  
                 	for(var i=0; i < result.length; i++){
                 		if(result[i][0] == id){
-                		//	result[i].splice(0,6); 
                 		}else{
                 			list.push(result[i]); 
                 		}
                     }
-                    //list.push(result); 
+        
                     $.ajax({ 
 				        type: 'post',                    
 				        url:'src/model/addToList.php', 
@@ -82,8 +89,7 @@ var mashup = {
 				    });
                 }
             });
-        });
-		
+        });		
     },       
 };
     

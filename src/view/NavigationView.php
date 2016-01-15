@@ -5,7 +5,6 @@ class NavigationView{
 	public static $action = "action";
 	public static $actionSearch = "search";
 	public static $actionList = "list";
- 
 		
 	public static function getAction(){
 		

@@ -19,26 +19,6 @@ class MovieInformation{
 		$this->filepathList = "src/model/list.json";
 	}
 
-	public function getSearchResult($search){
-
-		$this->searchWord = strip_tags($search);
-		$this->switchSearchWord($this->searchWord); 
-
-		$result = $this->getData($this->urlOmdbAll); 
-		return json_decode($result, true);
-
-	}
-
-	public function getAllDataFromSearch($searchResult){
-		for($i=0; $i < count($searchResult); $i++){
-			$this->switchImdbId($searchResult[$i]["imdbID"]); 
-			$result = $this->getData($this->urlOmdbIndividual);
-			array_push($this->fullSearchResults, json_decode($result, true));
-		}
-
-		return $this->fullSearchResults;
-	}
-
 	public function switchSearchWord($searchWord){
 		$this->urlOmdbAll = "http://www.omdbapi.com/?s=$searchWord&r=json";  
 	}
@@ -51,6 +31,28 @@ class MovieInformation{
 		$this->urlEpguides = "http://epguides.frecar.no/show/$title/next/"; 
 	}
 
+	// Get search result from omdb-api. 
+	public function getSearchResult($search){
+		$this->searchWord = strip_tags($search);
+		$this->switchSearchWord($this->searchWord); 
+
+		$result = $this->getData($this->urlOmdbAll); 
+		return json_decode($result, true);
+
+	}
+
+	// Get all information for each movie/tv-show from omdb-api. 
+	public function getAllDataFromSearch($searchResult){
+
+		for($i=0; $i < count($searchResult); $i++){
+			$this->switchImdbId($searchResult[$i]["imdbID"]); 
+			$result = $this->getData($this->urlOmdbIndividual);
+			array_push($this->fullSearchResults, json_decode($result, true));
+		}
+		return $this->fullSearchResults;
+	}
+
+	// Get information for next tv-show episode from epguides-api. 
 	public function getNextEpisode($title){
 		$this->switchTitle($title);
 		$result = $this->getData($this->urlEpguides);
@@ -74,12 +76,14 @@ class MovieInformation{
 		return $data;
 	}
 
+	// Save complete result from the search in a file. 
 	public function saveSearchTofile($completeSearchResults){
 		$jsonfile = fopen($this->filepathSearch, "w+") or die("Unable to open file!");
 		fwrite($jsonfile, json_encode($completeSearchResults));
 		fclose($jsonfile);	
 	}
 
+	// Get saved movie/tv-shows from file. 
 	public function getList(){
 		$file = fopen($this->filepathList, "r+") or die("Unable to open file!");
 		$content = fread($file,filesize($this->filepathList)); 

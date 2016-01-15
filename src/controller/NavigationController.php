@@ -15,7 +15,7 @@ class NavigationController{
 					
 			default:
 			$controller = new MashupController();
-			return $controller->getSearchForm();
+			return $controller->getSearchContent();
 			break;
 		}
 	}

@@ -2,6 +2,14 @@
 
 class MashupView{
 
+	public function didUserPressSearch(){
+		if(isset($_POST["searchForm"])){
+			return array($_POST['token'], $_POST['searchinput']);
+		}else{
+			return null;
+		}	
+	}
+
 	public function navbar(){
 		$html = "
       	<nav class='navbar navbar-inverse navbar-fixed-top'>
@@ -25,9 +33,10 @@ class MashupView{
     	return $html;
 	}
 
+	// Display list of movies/tv-shows. 
 	public function listView($list){
-		//var_dump($list); die();
-		$imdbid = 0;
+		// Index for each element in array. 
+		$imdbid = 0; 
 		$imdbRating = 1;
 		$title = 2; 
 		$year = 3;
@@ -44,6 +53,8 @@ class MashupView{
 
   				if($list[$i][$imdbRating] !==  "N/A"){
 					$html .= $list[$i][$imdbRating]."</button>"; 
+				}else{
+					$html .= "</button>"; 
 				} 
 
   				$html .="
@@ -65,41 +76,34 @@ class MashupView{
 		return $html; 
 	}
 
-	public function didUserPressSearch(){
-		if(isset($_POST["searchForm"])){
-			return array($_POST['token'], $_POST['searchinput']);
-		}else{
-			return null;
-		}	
-	}
-
 	public function searchView($token, $message){
 		$html = "
-    	<div class='container-fluid'>
-          	<div class='row'>
-				<div class='col-md-6 col-md-offset-3' id='searchdiv'>
-					<h1>Search!</h1>
-					<form method='post' action='?action=" .NavigationView::$actionSearch. "' class='form-horizontal'>
-				    	<div class='form-group'>
-				    		<div class='col-sm-10'>
-				      			<input type='text' class='form-control' id='search' name='searchinput' placeholder='for a movie or a tv show' required autofocus>
-				      			<input type='hidden' name='token' value=$token>
-				    		</div>
-				  		</div>
-				  		<div class='form-group'>
-				    		<div class='col-sm-10'>
-				      			<button type='submit' name='searchForm' class='btn btn-default' id='searchbutton'><span class='glyphicon glyphicon-search' aria-hidden='true'></span></button>
-				      			<p class='search-message'>$message</p>
-				    		</div>
-  						</div>
-					</form>
-				</div>
-	  		</div>
-        </div>";
+	    	<div class='container-fluid'>
+	          	<div class='row'>
+					<div class='col-md-6 col-md-offset-3' id='searchdiv'>
+						<h1>Search!</h1>
+						<form method='post' action='?action=" .NavigationView::$actionSearch. "' class='form-horizontal'>
+					    	<div class='form-group'>
+					    		<div class='col-sm-10'>
+					      			<input type='text' class='form-control' id='search' name='searchinput' placeholder='for a movie or a tv show' required autofocus>
+					      			<input type='hidden' name='token' value=$token>
+					    		</div>
+					  		</div>
+					  		<div class='form-group'>
+					    		<div class='col-sm-10'>
+					      			<button type='submit' name='searchForm' class='btn btn-default' id='searchbutton'><span class='glyphicon glyphicon-search' aria-hidden='true'></span></button>
+					      			<p class='search-message'>$message</p>
+					    		</div>
+	  						</div>
+						</form>
+					</div>
+		  		</div>
+	        </div>";
 
     	return $html;
 	}
 
+	// Display search result of movies/tv-shows. 
 	public function displaySearchResult($completeResults, $epguides){
 		$html = "
 			<div class='list-group' id='resultList'>";
@@ -134,7 +138,6 @@ class MashupView{
 			}
 
 		$html .= "</div>";
-
 		return $html; 
 	}
 
@@ -142,8 +145,7 @@ class MashupView{
 		$html = "
 			<script src='lib/jquery.min.js'></script>
 			<script src='lib/bootstrap/js/bootstrap.min.js'></script>
-			<script src='javascript/mashup.js'></script>
-			<script src='javascript/checkConnectionDown.js'></script>";
+			<script src='javascript/mashup.js'></script>";
 		return $html;
 	}
 }
