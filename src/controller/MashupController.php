@@ -31,7 +31,7 @@ class MashupController{
 
 				if($result == null){
 					return $this->getSearchView("Sorry, API problems at the moment!"); // If something goes wrong with the api. 
-				}else if(isset($result['Response'])){
+				}else if($result['Response'] == "False"){
 					return $this->getSearchView("Sorry, couldn't find what you're looking for!"); // Movie or tv-show didn't exist. 
 				}else{
 					$this->allsearchResults = $result; 
