@@ -12,23 +12,23 @@ class MovieInformation{
 	private $filepathList;
 
 	public function __construct(){
-		$this->urlOmdbAll = "http://www.omdbapi.com/?s=$this->searchWord&r=json";  
-		$this->urlOmdbIndividual = "http://www.omdbapi.com/?i=$this->imdbId&plot=short&r=json"; 
-		$this->urlEpguides = "http://epguides.frecar.no/show/$this->urlEpguides/next/"; 
+		$this->urlOmdbAll = "https://www.omdbapi.com/?s=$this->searchWord&r=json";  
+		$this->urlOmdbIndividual = "https://www.omdbapi.com/?i=$this->imdbId&plot=short&r=json"; 
+		$this->urlEpguides = "https://epguides.frecar.no/show/$this->urlEpguides/next/"; 
 		$this->filepathSearch = "src/model/search.json";
 		$this->filepathList = "src/model/list.json";
 	}
 
 	public function switchSearchWord($searchWord){
-		$this->urlOmdbAll = "http://www.omdbapi.com/?s=$searchWord&r=json";  
+		$this->urlOmdbAll = "https://www.omdbapi.com/?s=$searchWord&r=json";  
 	}
 
 	public function switchImdbId($imdbid){
-		$this->urlOmdbIndividual = "http://www.omdbapi.com/?i=$imdbid&plot=short&r=json";  
+		$this->urlOmdbIndividual = "https://www.omdbapi.com/?i=$imdbid&plot=short&r=json";  
 	}
 
 	public function switchTitle($title){
-		$this->urlEpguides = "http://epguides.frecar.no/show/$title/next/"; 
+		$this->urlEpguides = "https://epguides.frecar.no/show/$title/next/"; 
 	}
 
 	// Get search result from omdb-api. 
@@ -47,7 +47,18 @@ class MovieInformation{
 		for($i=0; $i < count($searchResult); $i++){
 			$this->switchImdbId($searchResult[$i]["imdbID"]); 
 			$result = $this->getData($this->urlOmdbIndividual);
-			array_push($this->fullSearchResults, json_decode($result, true));
+			
+			// Change from http to https -> Poster.
+			$newResult = json_decode($result, true);
+			$https = substr($newResult["Poster"],0,4);
+			$https .= "s";
+			$rest = substr($newResult["Poster"],4);
+		    
+		    $newUrl = $https . $rest; 
+			
+		    $newResult['Poster'] = $newUrl; 
+		    
+			array_push($this->fullSearchResults, $newResult);
 		}
 		return $this->fullSearchResults;
 	}
@@ -72,7 +83,6 @@ class MovieInformation{
 		curl_setopt($ch, CURLOPT_USERAGENT,"as223my"); 
 		$data = curl_exec($ch);
 		curl_close($ch); 
-	
 		return $data;
 	}
 

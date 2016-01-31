@@ -12,6 +12,13 @@ class HTMLView{
 		<!DOCTYPE html>
 		<html>
 			<head>
+			<script>
+			var run = function(){
+                 if (Offline.state === 'up')
+                 Offline.check();
+			};
+                 setInterval(run, 3000);
+            </script>
 				<meta charset ='utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1'>
 				<title>Never-miss</title>
