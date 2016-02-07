@@ -16,6 +16,7 @@ class HTMLView{
 			var run = function(){
                  if (Offline.state === 'up')
                  Offline.check();
+        
 			};
                  setInterval(run, 3000);
             </script>

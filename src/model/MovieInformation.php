@@ -5,7 +5,7 @@ class MovieInformation{
 	private $urlOmdbAll;
 	private $urlOmdbIndividual;
 	private $urlPoster; 
-	private $apiKey = "dcbfb146";  
+	private $apiKey = "[APIKEY]";  
 	private $urlEpguides = ""; 
 	private $searchWord = ""; 
 	private $imdbId = "";
@@ -54,21 +54,12 @@ class MovieInformation{
 		for($i=0; $i < count($searchResult); $i++){
 			$this->switchImdbId($searchResult[$i]["imdbID"]); 
 			$this->switchImdbIdPoster($searchResult[$i]["imdbID"]); 
+
 			$result = $this->getData($this->urlOmdbIndividual);
 			
 			$newResult = json_decode($result, true);
 
-			$newResult['Poster'] = $this->urlPoster;
-
-		/*	// Change from http to https -> Poster.
-			$newResult = json_decode($result, true);
-			$https = substr($newResult["Poster"],0,4);
-			$https .= "s";
-			$rest = substr($newResult["Poster"],4);
-		    
-		    $newUrl = $https . $rest; 
-			
-		    $newResult['Poster'] = $newUrl; */
+			$newResult['Poster'] = $this->urlPoster; //Change imdb hotlink to omdb for posters.
 		    
 			array_push($this->fullSearchResults, $newResult);
 		}
@@ -108,9 +99,26 @@ class MovieInformation{
 
 	// Get saved movie/tv-shows from file. 
 	public function getList(){
-		$file = fopen($this->filepathList, "r+") or die("Unable to open file!");
-		$content = fread($file,filesize($this->filepathList)); 
+		$fileSize = filesize($this->filepathList);
+		if($fileSize){
+			$file = fopen($this->filepathList, "r+") or die("Unable to open file!");
+			$content = fread($file,filesize($this->filepathList)); 
+			fclose($file);
+
+			//If list is tampered with. 
+			if(json_decode($content,true) === null){
+				$this->emptyList();
+			}
+			return json_decode($content, true);
+		}
+		
+		$this->emptyList();
+		return null;
+	}
+
+	public function emptyList(){
+		$file = fopen($this->filepathList, "w+") or die("Unable to open file!");
+		fwrite($file, "null");
 		fclose($file);
-		return json_decode($content, true);
 	}
 }
