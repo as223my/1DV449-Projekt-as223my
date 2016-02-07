@@ -120,7 +120,7 @@ class MashupView{
   				$html .="
 				<button type='button' class='btn btn-default btn-lg add'  id=".$completeResults[$i]["imdbID"].">
   				<span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button>
-				<h4>".$completeResults[$i]["Title"]." (".$completeResults[$i]["Year"]." )</h4>
+				<h4>".$completeResults[$i]["Title"]." (".$completeResults[$i]["Year"].")</h4>
 				<img src=".$completeResults[$i]["Poster"]. " class='pictures'>"; 
 
 				if($completeResults[$i]["Plot"] !==  "N/A"){
