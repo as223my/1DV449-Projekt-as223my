@@ -46,13 +46,7 @@ class MashupController{
 					$completeSearchResults = $this->mInfo->getAllDataFromSearch($this->searchResults); 
 					for($i=0; $i < count($completeSearchResults); $i++){
 						if($completeSearchResults[$i]["Type"] == "series"){
-							$nextEpisode = $this->mInfo->getNextEpisode($completeSearchResults[$i]["Title"]);
-							if($nextEpisode != null){
-								// Check next episode from epguides-api. 
-								array_push($this->epguides, $i);
-								array_push($this->epguides, $nextEpisode["episode"]["title"]);
-								array_push($this->epguides, $nextEpisode["episode"]["release_date"]); 
-							}
+							$this->checkEpisode($completeSearchResults, $i);
 						}
 					} 
 				
@@ -83,7 +77,7 @@ class MashupController{
 
 		$html = $this->mashupView->navbar();
 		$html .= $this->mashupView->searchView($token, $message); 
-		$html .= $this->mashupView->displaySearchResult($completeResults, $epguides); 
+		$html .= $this->mashupView->searchResult($completeResults, $epguides); 
 		$html .= $this->mashupView->scripts(); 
 		return $html;
 	}
@@ -92,8 +86,32 @@ class MashupController{
 	public function getList(){
 		$html = $this->mashupView->navbar();
 		$list = $this->mInfo->getList(); 
-		$html .= $this->mashupView->listView($list); 
+		for($i=0; $i<count($list); $i++){
+			if($list[$i]["Type"] == "series"){
+				$this->checkEpisode($list, $i);
+			}	
+		}
+
+		$html .= $this->mashupView->listView($list, $this->epguides); 
 		$html .= $this->mashupView->scripts();
 		return $html;
+	}
+
+	// Check next episode from epguides-api.
+	public function checkEpisode($result, $i){
+		$nextEpisode = $this->mInfo->getNextEpisode($result[$i]["Title"]);
+		if($nextEpisode != null){
+			$arr = array();
+
+			array_push($arr, $result[$i]["Title"]);
+			array_push($arr, $nextEpisode["episode"]["title"]);
+			array_push($arr, $nextEpisode["episode"]["release_date"]);
+
+			array_push($this->epguides, $arr);
+			// Check next episode from epguides-api. 
+		/*	array_push($this->epguides, $i);
+			array_push($this->epguides, $nextEpisode["episode"]["title"]);
+			array_push($this->epguides, $nextEpisode["episode"]["release_date"]); */
+		}
 	}
 }

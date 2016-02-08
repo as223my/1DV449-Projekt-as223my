@@ -33,49 +33,6 @@ class MashupView{
     	return $html;
 	}
 
-	// Display list of movies/tv-shows. 
-	public function listView($list){
-		// Index for each element in array. 
-		$imdbid = 0; 
-		$imdbRating = 1;
-		$title = 2; 
-		$year = 3;
-		$img = 4; 
-		$plot = 5;
-
-		$html = "
-			<div class='list-group' id='showList'>";
-
-			for($i=0; $i < count($list); $i++){
-				$html .= "<div class='list-group-item'>
-				<button type='button' class='rate'>
-  				<span class='glyphicon glyphicon-star-empty' aria-hidden='true'></span>";
-
-  				if($list[$i][$imdbRating] !==  "N/A"){
-					$html .= $list[$i][$imdbRating]."</button>"; 
-				}else{
-					$html .= "</button>"; 
-				} 
-
-  				$html .="
-				<button type='button' class='btn btn-default btn-lg remove'  id=".$list[$i][$imdbid].">
-  				<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>
-				<h4>".$list[$i][$title]." (".$list[$i][$year]." )</h4>
-				<img src=".$list[$i][$img]. " class='pictures'>"; 
-
-				if($list[$i][$plot] !==  "N/A"){
-					$html .= "<p class='plot'>".$list[$i][$plot]."</p>"; 
-				} 
-
-				$html .= "<p><a href='http://www.youtube.com/results?search_query=".$list[$i][$title]."+trailer' target='_blank'>Search for trailer on youtube</a></p>";
-				$html .= "</div>";
-			}
-
-		$html .= "</div>";
-
-		return $html; 
-	}
-
 	public function searchView($token, $message){
 		$html = "
 	    	<div class='container-fluid'>
@@ -103,40 +60,80 @@ class MashupView{
     	return $html;
 	}
 
+	// Display list of movies/tv-shows. 
+	public function listView($list, $epguides){
+
+		$html = "
+			<div class='list-group' id='showList'>";
+
+			for($i=0; $i < count($list); $i++){
+				
+				$html .= $this->displayRating($list, $i); 
+
+  				$html .="
+				<button type='button' class='btn btn-default btn-lg remove'  id=".$list[$i]["imdbID"].">
+  				<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>";
+
+  				$html .= $this->displayInformation($list, $epguides, $i);
+			}
+
+		$html .= "</div>";
+
+		return $html; 
+	}
+
 	// Display search result of movies/tv-shows. 
-	public function displaySearchResult($completeResults, $epguides){
+	public function searchResult($completeResults, $epguides){
 		$html = "
 			<div class='list-group' id='resultList'>";
 
 			for($i=0; $i < count($completeResults); $i++){
-				$html .= "<div class='list-group-item'>
+
+				$html .= $this->displayRating($completeResults, $i); 
+				
+  				$html .="
+				<button type='button' class='btn btn-default btn-lg add'  id=".$completeResults[$i]["imdbID"].">
+  				<span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button>";
+
+  				$html .= $this->displayInformation($completeResults, $epguides, $i);
+			}
+
+		$html .= "</div>";
+		return $html; 
+	}
+
+	// Return results of rating. 
+	public function displayRating($result, $i){
+		$html = "<div class='list-group-item'>
 				<button type='button' class='rate'>
   				<span class='glyphicon glyphicon-star-empty' aria-hidden='true'></span>";
 
-  				if($completeResults[$i]["imdbRating"] !==  "N/A"){
-					$html .= $completeResults[$i]["imdbRating"]."</button>"; 
-				} 
+  		if($result[$i]["imdbRating"] !==  "N/A"){
+			$html .= $result[$i]["imdbRating"]."</button>"; 
+		}else{
+			$html .= "</button>"; 
+		} 
+		return $html;
+	}
 
-  				$html .="
-				<button type='button' class='btn btn-default btn-lg add'  id=".$completeResults[$i]["imdbID"].">
-  				<span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button>
-				<h4>".$completeResults[$i]["Title"]." (".$completeResults[$i]["Year"].")</h4>
-				<img src=".$completeResults[$i]["Poster"]. " class='pictures'>"; 
+	// Return information about title, year, plot, link to trailer and possibly information about next episode. 
+	public function displayInformation($result, $epguides, $i){
+		$html ="<h4>".$result[$i]["Title"]." (".$result[$i]["Year"]." )</h4>
+			<img src=".$result[$i]["Poster"]. " class='pictures'>"; 
 
-				if($completeResults[$i]["Plot"] !==  "N/A"){
-					$html .= "<p class='plot'>".$completeResults[$i]["Plot"]."</p>"; 
-				} 
+		if($result[$i]["Plot"] !==  "N/A"){
+			$html .= "<p class='plot'>".$result[$i]["Plot"]."</p>"; 
+		} 
 
-				if(!empty($epguides)){
-					if($epguides[0] == $i){
-						$html .= "<p class='nextEpisode'><b>Next Episode:</b> ".$epguides[1].", ".$epguides[2]."</p>";
-					}
+		if(!empty($epguides)){
+			for($j=0; $j < count($epguides); $j++){
+				if($epguides[$j][0] == $result[$i]["Title"]){
+					$html .= "<p class='nextEpisode'><b>Next Episode:</b> ".$epguides[$j][1].", ".$epguides[$j][2]."</p>";
 				}
-
-				$html .= "<p><a href='http://www.youtube.com/results?search_query=".$completeResults[$i]["Title"]."+trailer' target='_blank'>Search for trailer on youtube</a></p>";
-				$html .= "</div>";
 			}
+		}
 
+		$html .= "<p><a href='http://www.youtube.com/results?search_query=".$result[$i]["Title"]."+trailer' target='_blank'>Search for trailer on youtube</a></p>";
 		$html .= "</div>";
 		return $html; 
 	}

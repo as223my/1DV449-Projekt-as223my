@@ -1,7 +1,7 @@
 "use strict";
 
 var mashup = {
-    toAdd : [],
+    toAdd : {},
     newList : [],
 
     init:function(e){
@@ -10,23 +10,24 @@ var mashup = {
 		$(".add").click(function(){
 			var id = this.id; // ButtonId (imdbID). 
             $.ajax({ 
-                type: 'GET', 
+                type: 'get', 
                 url: './src/model/search.json', 
                 dataType:'json',
                 success: function (result) { 
                 	for(var i=0; i < result.length; i++){
                 		if(result[i].imdbID == id){
-                			mashup.toAdd.push(result[i].imdbID);
-                			mashup.toAdd.push(result[i].imdbRating);
-                			mashup.toAdd.push(result[i].Title);
-                			mashup.toAdd.push(result[i].Year);
-                			mashup.toAdd.push(result[i].Poster);
-                			mashup.toAdd.push(result[i].Plot);
+                           mashup.toAdd["imdbID"] = result[i].imdbID;
+                            mashup.toAdd["imdbRating"] = result[i].imdbRating;
+                            mashup.toAdd["Title"] = result[i].Title;
+                            mashup.toAdd["Year"] = result[i].Year;
+                            mashup.toAdd["Poster"] = result[i].Poster;
+                            mashup.toAdd["Plot"] = result[i].Plot;
+                            mashup.toAdd["Type"] = result[i].Type;
                 		}
                     }
-
+                
                     $.ajax({ 
-                		type: 'GET', 
+                		type: 'get', 
                 		url: './src/model/list.json', 
                 		dataType:'json',
                 		success: function (result) { 
@@ -36,21 +37,22 @@ var mashup = {
 		                		}
 	                		}
                             // Don't add doublets to list
-                            for(var j=0; j < mashup.newList.length; j++){
-                                if(jQuery.inArray(mashup.toAdd[0], mashup.newList[j]) !== -1){
-                                    mashup.toAdd = [];
+                           for(var j=0; j < mashup.newList.length; j++){
+                                if(mashup.toAdd["imdbID"] == mashup.newList[j]["imdbID"]){
+                                    mashup.toAdd = {};
                                 }
                             }
                 			mashup.newList.push(mashup.toAdd);
+                            console.log(mashup.newList); 
 
                 			 $.ajax({ 
 				                type: 'post',                    
-				              	url:'src/model/addToList.php', 
+				              	url:'./src/model/addToList.php', 
 				              	data:{"list" : mashup.newList},
 				              	dataType:'text',     
 				                success: function (result) {
 				                	mashup.newList = []; 
-				                	mashup.toAdd = [];
+				                	mashup.toAdd = {};
 				                	$('#'+id).prop('disabled', true);
 				                	$('#'+id).css('color', 'black');
 				                	id = "";
@@ -71,8 +73,9 @@ var mashup = {
                 url: './src/model/list.json', 
                 dataType:'json',
                 success: function (result) {  
+                    console.log(result.length);
                 	for(var i=0; i < result.length; i++){
-                		if(result[i][0] == id){
+                		if(result[i]["imdbID"] == id){
                 		}else{
                 			list.push(result[i]); 
                 		}

@@ -45,7 +45,6 @@ class MovieInformation{
 
 		$result = $this->getData($this->urlOmdbAll); 
 		return json_decode($result, true);
-
 	}
 
 	// Get all information for each movie/tv-show from omdb-api. 

@@ -55,6 +55,7 @@ body {
 	width: 300px;
 }
 
+
 #showList{
 	margin-top:50px;
 	margin-right: auto;
@@ -64,7 +65,8 @@ body {
 }
 
 #showList img{
-	margin-left:100px;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .form-horizontal{
