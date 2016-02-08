@@ -42,8 +42,7 @@ var mashup = {
                                     mashup.toAdd = {};
                                 }
                             }
-                			mashup.newList.push(mashup.toAdd);
-                            console.log(mashup.newList); 
+                			mashup.newList.push(mashup.toAdd); 
 
                 			 $.ajax({ 
 				                type: 'post',                    

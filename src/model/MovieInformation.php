@@ -5,7 +5,7 @@ class MovieInformation{
 	private $urlOmdbAll;
 	private $urlOmdbIndividual;
 	private $urlPoster; 
-	private $apiKey = "[APIKEY]";  
+	private $apiKey = ["APIKEY"];  
 	private $urlEpguides = ""; 
 	private $searchWord = ""; 
 	private $imdbId = "";
