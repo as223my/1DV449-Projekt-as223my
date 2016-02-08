@@ -12,17 +12,32 @@ class HTMLView{
 		<!DOCTYPE html>
 		<html>
 			<head>
-			<script>
-			var run = function(){
-                 if (Offline.state === 'up')
-                 Offline.check();
-        
-			};
-                 setInterval(run, 3000);
-            </script>
 				<meta charset ='utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1'>
 				<title>Never-miss</title>
+				<script>
+    				var checkConnection = function(){
+                        Offline.check()
+                        if(Offline.state === 'down'){
+                            if(window.location.href !== 'https://www.anniesahlberg.se/1DV449-Project/?action=list'){
+                                document.getElementById('search').disabled = true;
+                                document.getElementById('searchbutton').disabled = true;
+                                if(document.getElementsByClassName('btn btn-default btn-lg add')[0]){document.getElementsByClassName('btn btn-default btn-lg add')[0].disabled = true;}
+                            }else{
+                                if(document.getElementsByClassName('btn btn-default btn-lg remove')[0]){document.getElementsByClassName('btn btn-default btn-lg remove')[0].disabled = true;}
+                            }
+                        }else{
+                            if(window.location.href !== 'https://www.anniesahlberg.se/1DV449-Project/?action=list'){
+                                document.getElementById('search').disabled = false;
+                                document.getElementById('searchbutton').disabled = false;
+                                if(document.getElementsByClassName('btn btn-default btn-lg add')[0]){document.getElementsByClassName('btn btn-default btn-lg add')[0].disabled = false;}
+                            }else{
+                                if(document.getElementsByClassName('btn btn-default btn-lg remove')[0]){document.getElementsByClassName('btn btn-default btn-lg remove')[0].disabled = false;}
+                            }
+                        }
+                    };
+                    setInterval(checkConnection, 3000);
+		        </script>
 				<link rel='icon' type='image/ico' href='favicon.ico'>
 				<link rel='stylesheet' href='lib/bootstrap/css/bootstrap.min.css'>
 				<link rel='stylesheet' type='text/css' href='css/style.css' media='screen and (min-width:951px)' />
