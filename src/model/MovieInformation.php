@@ -5,7 +5,7 @@ class MovieInformation{
 	private $urlOmdbAll;
 	private $urlOmdbIndividual;
 	private $urlPoster; 
-	private $apiKey = ["APIKEY"];  
+	private $apiKey = "[APIKEY]";  
 	private $urlEpguides = ""; 
 	private $searchWord = ""; 
 	private $imdbId = "";
@@ -91,7 +91,7 @@ class MovieInformation{
 
 	// Save complete result from the search in a file. 
 	public function saveSearchTofile($completeSearchResults){
-		$jsonfile = fopen($this->filepathSearch, "w+") or die("Unable to open file!");
+		$jsonfile = fopen($this->filepathSearch, "w+");
 		fwrite($jsonfile, json_encode($completeSearchResults));
 		fclose($jsonfile);	
 	}
@@ -100,7 +100,7 @@ class MovieInformation{
 	public function getList(){
 		$fileSize = filesize($this->filepathList);
 		if($fileSize){
-			$file = fopen($this->filepathList, "r+") or die("Unable to open file!");
+			$file = fopen($this->filepathList, "r+");
 			$content = fread($file,filesize($this->filepathList)); 
 			fclose($file);
 
@@ -116,7 +116,7 @@ class MovieInformation{
 	}
 
 	public function emptyList(){
-		$file = fopen($this->filepathList, "w+") or die("Unable to open file!");
+		$file = fopen($this->filepathList, "w+");
 		fwrite($file, "null");
 		fclose($file);
 	}

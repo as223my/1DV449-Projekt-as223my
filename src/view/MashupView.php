@@ -10,6 +10,7 @@ class MashupView{
 		}	
 	}
 
+	// Menu. 
 	public function navbar(){
 		$html = "
       	<nav class='navbar navbar-inverse navbar-fixed-top'>
@@ -23,7 +24,7 @@ class MashupView{
         		</div>
         		<div id='navbar' class='collapse navbar-collapse'>
           			<ul class='nav navbar-nav'>
-            			<li><a href='?action=".NavigationView::$actionSearch."' id='navlink1' active>Search</a></li>
+            			<li><a href='?action=".NavigationView::$actionSearch."' id='navlink1'>Search</a></li>
             			<li><a href='?action=".NavigationView::$actionList."' id='navlink2'>List</a></li>
           			</ul>
         		</div>
@@ -33,6 +34,7 @@ class MashupView{
     	return $html;
 	}
 
+	// Search form.
 	public function searchView($token, $message){
 		$html = "
 	    	<div class='container-fluid'>
@@ -136,14 +138,5 @@ class MashupView{
 		$html .= "<p><a href='http://www.youtube.com/results?search_query=".$result[$i]["Title"]."+trailer' target='_blank'>Search for trailer on youtube</a></p>";
 		$html .= "</div>";
 		return $html; 
-	}
-
-	public function scripts(){
-		$html = "
-			<script src='//code.jquery.com/jquery-1.12.0.min.js'></script>
-			<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' 
-			integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS' crossorigin='anonymous'></script>
-			<script src='javascript/mashup.js'></script>";
-		return $html;
 	}
 }
