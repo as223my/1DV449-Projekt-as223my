@@ -6,5 +6,4 @@ Därför är min tanke att göra en film/tv-serie mashup, där jag (i nuläget) 
 Jag vill också göra det möjligt att spara de filmer/tv-serier man är intresserad av i en lista och eventuellt utöka med mer funktionalitet om tid finns. 
 
 
-![My image](https://github.com/as223my/1DV449-Projekt-as223my/blob/master/SchematiskBild%20(2).png)
 
