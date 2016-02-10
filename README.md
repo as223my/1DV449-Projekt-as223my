@@ -21,7 +21,8 @@ För att få fram information över filmer och tv-serier har jag använt mig av 
 ![Schematisk bild](https://github.com/as223my/1DV449-Projekt-as223my/blob/master/SchematiskBild.png)
 
 ##Säkerhet
-Min applikation kör via https för att informationen som skickas mellan klient och server ska vara krypterad. Jag har även skyddat mig mot CSRF attacker med hjälp av token i ett gömt inputfält i mitt formulär. Jag har även försökt att skydda min applikation mot XSS attacker då jag använder mig av strip_tags() i php för att ta bort eventuella tags.
+Min applikation kör via https för att informationen som skickas mellan klient och server ska vara krypterad. 
+Jag har även skyddat mig mot CSRF attacker med hjälp av token i ett gömt inputfält i mitt formulär. För att försöka förhindra XSS attacker har jag använt mig av strip_tags() i php för att ta bort eventuella tags i koden.
 
 Då jag inte hanterar någon känslig data eller skriver ut något som postas av användaren, så hade jag egentligen inte behövt all denna säkerhet just nu. Men genom att applikationen i framtiden kan tänkas att byggas ut i funktionalitet med bla inloggning ville jag använda mig av detta ändå. 
 
