@@ -43,7 +43,12 @@ Jag lade även till funktionalitet så att uppkopplingens status kollas var tred
 ##Risker med applikationen
 Min applikation är helt beroende av Omdbs api, så om det går ner eller ändras så kommer förmågan att söka efter filmer/tv-serier att försvinna, dock meddelas användaren om så är fallet.
 
-Jag gör heller ingen koll på om datat som jag hämtar från mina apier innehåller något skadligt. Jag borde nog även ha lagt till funktionalitet i koden som visar om javascript inte är aktiverat, då man i så fall mister möjligheten att lägga till och ta bort filmer och tv-serier i listan. 
-
+Jag gör heller ingen koll på om datat som jag hämtar från mina apier innehåller något skadligt. Jag borde nog även ha lagt till funktionalitet i koden som visar om javascript inte är aktiverat, då man i så fall mister möjligheten att lägga till och ta bort filmer/tv-serier i listan. 
 
 ##Reflektion kring projektet
+Projektet har varit roligt och väldigt lärorikt för mig att genomföra då jag är totalt ny till begrepp så som offline-first.
+Jag vill gärna fortsätta att utveckla mitt projekt så att det blir funktionellt för mer än en person publicerat, då tänker jag speciellt på inloggning. 
+Jag har stött på många hinder längs vägen och skulle nog nu såhär i efterhand inte valt att använda mig av Omdbs api då antalet förfrågningar som krävs blir väldigt många. Annars så var det enkelt att använda och lätt att förstå. Jag hade dock problem med att hotlinks för Affisherna var till imdb, då de tydligen inte godkänner detta i publicerat läge. Men tur i oturen så har omdb en beta version med hotlinks för affisher och denna hade fått goda betyg och har fungerat bra att använda sig av istället. För att få tillgång till dess api nyckel krävdes dock en liten donation på 3 dollar, men det var det värt för att slippa tvingas byta ut hela apiet i projektets slutläge. 
+
+Det enda som jag är riktigt besviken på att jag inte kunde använda mig av var UpUp (serviceworkers bibliotek - https://www.talater.com/upup/) för utbyggnad av offline funktionaliteten, så att min applikation skulle fungera att användas mer ordentligt även utan internetuppkoppling. Jag lade ner väldigt mycket tid för att få det att fungera men fick tillslut ge upp då det inte fungerade att använda sig av min sökfunktion med UpUp tillagt i applikationen. 
+Jag trodde väldigt länge att det var något i min kod som ställde till det, så jag letade och testade i massor av timmar då jag inte kunde hitta någon information om vad som kunde vara problemet. Tillslut hittade jag denna lilla tråd (https://github.com/TalAter/UpUp/issues/56), och bestämde mig då för att nöja mig med offline.js i nuläget.
