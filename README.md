@@ -16,7 +16,7 @@ Det verkar även som om Imdb har en applikation som kallas Watchlist som likt mi
 På server sidan har jag använt mig av php och på klientsidan javascript (jquery). 
 Jag har dessutom använt mig av biblioteket offline.js för offline hantering samt bootstrap ramverk för att underlätta designen. 
 
-För att få fram information över filmer och tv-serier har jag använt mig av Omdb api (http://www.omdbapi.com/), och information om nästkommande avsnitt har jag fått ifrån epguides api (https://epguides-api.readthedocs.org/en/latest/). 
+För att få fram information över filmer och tv-serier har jag använt mig av Omdb api (http://www.omdbapi.com/), och information om nästkommande avsnitt har jag hämtat ifrån epguides api (https://epguides-api.readthedocs.org/en/latest/). 
 ##Schematisk bild
 ![Schematisk bild](https://github.com/as223my/1DV449-Projekt-as223my/blob/master/SchematiskBild.png)
 
