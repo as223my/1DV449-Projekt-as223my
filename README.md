@@ -24,7 +24,7 @@ För att få fram information över filmer och tv-serier har jag använt mig av 
 Min applikation kör via https för att informationen som skickas mellan klient och server ska vara krypterad. 
 Jag har även skyddat mig mot CSRF attacker med hjälp av token i ett gömt inputfält i mitt formulär. För att försöka förhindra XSS attacker har jag använt mig av strip_tags() i php för att ta bort eventuella tags i koden.
 
-Då jag inte hanterar någon känslig data eller skriver ut något som postas av användaren, så hade jag egentligen inte behövt all denna säkerhet just nu. Men genom att applikationen i framtiden kan tänkas att byggas ut i funktionalitet med bla inloggning ville jag använda mig av detta ändå. 
+Då jag inte hanterar någon känslig data eller skriver ut något som postas av användaren, så hade jag egentligen inte behövt all denna säkerhet just nu. Men genom att applikationen i framtiden kan tänkas att byggas ut i funktionalitet med bland annat inloggning ville jag använda mig av detta ändå. 
 
 ##Prestandaoptimering
 
