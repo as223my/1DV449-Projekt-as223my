@@ -11,7 +11,7 @@ Jag har gjort en applikation som gör det möjligt att söka efter filmer/tv-ser
 Applikationen visar även information om när nästa avsnitt finns tillgängligt i en serie som du sökt på.
 
 I dagsläget använder jag mig av en app på min mobil som heter TVShow Time denna app gör det möjligt för mig att hålla reda på mina tv-serier och vilka avsnitt som kommer, samt vilka jag redan sett. Det denna app saknar är möjligheten att även kolla upp och lägga till filmer, därav  min idé att skapa en applikation som gör detta möjligt. 
-Det verkar även som om Imdb har en applikation som kallas Watchlist som lik min håller reda på dina filmer/tv-serier.
+Det verkar även som om Imdb har en applikation som kallas Watchlist som likt min håller reda på dina filmer/tv-serier.
 
 På server sidan har jag använt mig av php och på klientsidan javascript (jquery). 
 Jag har dessutom använt mig av biblioteket offline.js för offline hantering samt bootstrap ramverk för att underlätta designen. 
