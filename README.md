@@ -47,7 +47,7 @@ Jag gör heller ingen koll på om datat som jag hämtar från mina apier innehå
 
 ##Reflektion kring projektet
 Projektet har varit roligt och väldigt lärorikt för mig att genomföra då jag är totalt ny till begrepp så som offline-first.
-Jag vill gärna fortsätta att utveckla mitt projekt så att det blir funktionellt för mer än en person publicerat, då tänker jag speciellt på inloggning. 
+Jag vill gärna fortsätta att utveckla mitt projekt så att det blir funktionellt för mer än en person att använda publicerat, då tänker jag speciellt på inloggning. 
 Jag har stött på många hinder längs vägen och skulle nog nu såhär i efterhand inte valt att använda mig av Omdbs api då antalet förfrågningar som krävs blir väldigt många. Annars så var det enkelt att använda och lätt att förstå. 
 
 Jag hade dock problem med att hotlinks för Affisherna var till imdb, då de tydligen inte godkänner detta i publicerat läge. Men tur i oturen så har omdb en beta version med hotlinks för affisher och denna hade fått goda betyg och har fungerat bra att använda sig av istället. För att få tillgång till dess api nyckel krävdes dock en liten donation på 3 dollar, men det var det värt för att slippa tvingas byta ut hela apiet i projektets slutläge. 
