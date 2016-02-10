@@ -38,7 +38,7 @@ Det hade varit underbart om all information kunde skickas med när förfrågning
 ##Offline-first
 Jag har valt att använda mig av biblioteket offline.js för att visa tydligt för användaren när internet uppkopplingen förloras/återupptas. Detta bibliotek var väldigt smidigt att använda, biblioteket använder sig av ajax anrop för att hålla koll på sidans uppkoppling.
 
-Jag lade även till funktionalitet så att uppkopplingens status kollas var tredje sekund detta för att kunna inaktivera sökfunktion och knappar i applikationen om uppkopplingen skulle tappas.
+Jag lade även till funktionalitet så att uppkopplingens status kollas var tredje sekund detta för att kunna inaktivera sökfunktionen och knappar i min applikation om uppkopplingen skulle tappas.
 
 ##Risker med applikationen
 
