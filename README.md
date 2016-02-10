@@ -41,5 +41,9 @@ Jag har valt att använda mig av biblioteket offline.js för att visa tydligt f�
 Jag lade även till funktionalitet så att uppkopplingens status kollas var tredje sekund detta för att kunna inaktivera sökfunktionen och knappar i min applikation om uppkopplingen skulle tappas.
 
 ##Risker med applikationen
+Min applikation är helt beroende av Omdbs api, så om det går ner eller ändras så kommer förmågan att söka efter filmer/tv-serier att försvinna, dock meddelas användaren om så är fallet.
+
+Jag gör heller ingen koll på om datat som jag hämtar från mina apier innehåller något skadligt. Jag borde nog även ha lagt till funktionalitet i koden som visar om javascript inte är aktiverat, då man mister möjligheten att lägga till och ta bort filmer och tv-serier i listan. 
+
 
 ##Reflektion kring projektet
