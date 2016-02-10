@@ -36,7 +36,7 @@ En av den större boven i min optimering känner jag är Omdbs api då jag tving
 Det hade varit underbart om all information kunde skickas med när förfrågning görs mot apiet med söknamnet istället för att man måste skicka en förfrågning per ImdbID för att bland annat få tillgång till handlingen till den sökta filmen/tv-serien. 
 
 ##Offline-first
-Jag har valt att använda mig av biblioteket offline.js för att visa tydligt för användaren när internet uppkopplingen förloras/återupptas. Detta bibliotek var väldigt smidigt att använda och använder sig av ajax anrop för att hålla koll på sidans uppkoppling.
+Jag har valt att använda mig av biblioteket offline.js för att visa tydligt för användaren när internet uppkopplingen förloras/återupptas. Detta bibliotek var väldigt smidigt att använda, biblioteket använder sig av ajax anrop för att hålla koll på sidans uppkoppling.
 
 Jag lade även till funktionalitet så att uppkopplingens status kollas var tredje sekund detta för att kunna inaktivera sökfunktion och knappar i applikationen om uppkopplingen skulle tappas.
 
