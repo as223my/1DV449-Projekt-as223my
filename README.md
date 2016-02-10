@@ -28,6 +28,14 @@ Då jag inte hanterar någon känslig data eller skriver ut något som postas av
 
 ##Prestandaoptimering
 
+Jag har minifierat alla mina css och javascriptfiler som jag använder mig av i koden. 
+Jag har även länkat in css filerna i headern samt javascriptfilerna längst ner i bodyn för att få en så snabb inläsning av sidan som möjligt. 
+Med undantag av offline.js samt ett tillhörande script som kollar uppkoppling statusen, som fick placeras i headern för att uppnå bra funktionalitet.
+
+Jag har även använt mig av cdn, både till bootstrap och jquery.   
+En av den större boven i min optimering känner jag är Omdbs api då jag tvingas att göra en mängd olika förfrågningar för att få ut den informationen jag behöver. 
+Det hade varit underbart om all information kunde skickas med när förfrågning görs mot apiet med söknamnet istället för att man måste skicka en förfrågning per ImdbID för att bland annat få tillgång till handlingen till den sökta filmen/tv-serien. 
+
 ##Offline-first
 
 ##Risker med applikationen
