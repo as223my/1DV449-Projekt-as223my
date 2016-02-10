@@ -7,9 +7,10 @@
 [https://www.youtube.com/watch?v=lJMhdt-r7Jk](https://www.youtube.com/watch?v=lJMhdt-r7Jk)
 
 ##Inledning
-Jag har gjort en applikation som gör det möjligt att söka efter filmer/tv-serier och spara dessa i en lista, så man kan hålla reda på vad som intresserar en.
-Du får även information om när nästa avsnitt finns tillgängligt i en serie som du sökt på.
-I dags läget använder jag mig av en app på min mobil som heter TVShow Time denna app gör det möjligt för mig att hålla reda på mina tv-serier och vilka avsnitt som kommer, samt vilka jag redan sett. Det denna app saknar är möjligheten att även kolla upp och lägga till filmer, därav  min idé att skapa en applikation som gör detta möjligt. 
+Jag har gjort en applikation som gör det möjligt att söka efter filmer/tv-serier och spara dessa i en lista, så man kan hålla reda på det som intresserar en.
+Applikationen visar även information om när nästa avsnitt finns tillgängligt i en serie som du sökt på.
+
+I dagsläget använder jag mig av en app på min mobil som heter TVShow Time denna app gör det möjligt för mig att hålla reda på mina tv-serier och vilka avsnitt som kommer, samt vilka jag redan sett. Det denna app saknar är möjligheten att även kolla upp och lägga till filmer, därav  min idé att skapa en applikation som gör detta möjligt. 
 Det verkar även som om Imdb har en applikation som kallas Watchlist som lik min håller reda på dina filmer/tv-serier.
 
 På server sidan har jag använt mig av php och på klientsidan javascript (jquery). 
